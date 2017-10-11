@@ -52,9 +52,9 @@
         </property>
         <property name="objectMapper">
             <bean class="com.fasterxml.jackson.databind.ObjectMapper">
-                <property name="serializationInclusion">
+                <!--<property name="serializationInclusion">
                     <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
-                </property>
+                </property>-->
                 <!-- 处理responseBody 里面日期类型 -->
                 <property name="dateFormat">
                     <bean class="java.text.SimpleDateFormat">
