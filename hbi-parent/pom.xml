@@ -1,0 +1,344 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.wang.hbi</groupId>
+  <artifactId>hbi-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>hbi-parent</name>
+  <description>hbi parent</description>
+  <url>http://maven.apache.org</url>
+
+  <modules>
+    <module>../hbj-web-admin</module>
+    <module>../hbi-jar-core</module>
+    <module>../hbi-jar-business</module>
+    <module>../hbi-jar-authority</module>
+  </modules>
+
+  <properties>
+    <config.dir>dev</config.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <aspectj.version>1.8.9</aspectj.version>
+    <spring.version>4.1.6.RELEASE</spring.version>
+    <spring.data.version>1.7.1.RELEASE</spring.data.version>
+    <log4j.version>1.16</log4j.version>
+    <junit.version>4.12</junit.version>
+    <druid.version>1.0.13</druid.version>
+    <mybatis.version>3.4.1</mybatis.version>
+    <mybatis.spring.version>1.3.0</mybatis.spring.version>
+    <hibernate.version>4.3.11.Final</hibernate.version>
+    <mysql.version>5.1.34</mysql.version>
+    <apache.common.version>2.1.1</apache.common.version>
+    <freemarker.version>2.3.23</freemarker.version>
+    <j2ee.version>3.0.1</j2ee.version>
+    <jackson-core-asl.version>1.9.13</jackson-core-asl.version>
+    <fasterxml.version>2.8.8</fasterxml.version>
+    <gson.version>2.8.0</gson.version>
+    <postgresql.version>9.3-1102-jdbc41</postgresql.version>
+    <javax.version>1.0</javax.version>
+    <common.lang3.version>3.4</common.lang3.version>
+    <slf4j.version>1.7.13</slf4j.version>
+    <ezmorph.version>1.0.6</ezmorph.version>
+    <commons-collections.version>3.2.1</commons-collections.version>
+    <commons-logging.version>1.1.1</commons-logging.version>
+    <commons-beanutils.version>1.8.3</commons-beanutils.version>
+    <json-lib.version>2.4</json-lib.version>
+    <commons-lang.version>2.4</commons-lang.version>
+    <jackson.version>1.9.8</jackson.version>
+  </properties>
+
+  <!-- 统一开启所有jar包依赖于gmp根项目 -->
+  <dependencies>
+    <!-- junit:test -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${common.lang3.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-beanutils</groupId>
+      <artifactId>commons-beanutils</artifactId>
+      <version>${commons-beanutils.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <version>${commons-logging.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>${commons-collections.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${commons-lang.version}</version>
+    </dependency>
+
+    <!-- maven:log -->
+    <dependency>
+      <groupId>org.bgee.log4jdbc-log4j2</groupId>
+      <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!-- servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${j2ee.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- aspectj框架包 -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <!-- jackson -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>${jackson-core-asl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${fasterxml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${fasterxml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${fasterxml.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>${jackson.version}</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- google gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>
+
+    <!-- Spring依赖 -->
+    <!--1)spring核心依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!--spring ioc依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!--2 spring坐标依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!--3 spring web相关依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!--4spring dao层依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!--5spring test相关依赖 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>${spring.data.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
+    <!-- 引入druid相关依赖 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
+
+    <!-- mysql数据库 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.version}</version>
+    </dependency>
+
+    <!-- 数据库连接池的包 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-dbcp2</artifactId>
+      <version>${apache.common.version}</version>
+    </dependency>
+
+    <!-- freemarker配置 -->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>${freemarker.version}</version>
+    </dependency>
+
+    <!-- postgresql驱动包 -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgresql.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>persistence-api</artifactId>
+      <version>${javax.version}</version>
+    </dependency>
+
+    <!-- json依赖 -->
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>${json-lib.version}</version>
+      <classifier>jdk15</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>net.sf.ezmorph</groupId>
+      <artifactId>ezmorph</artifactId>
+      <version>${ezmorph.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/config/${config.dir}</directory>
+      </resource>
+    </resources>
+    <finalName>hbi-${config.dir}</finalName>
+    <!-- 指定JDK为1.7版本，与其他项目一致 -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.2</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

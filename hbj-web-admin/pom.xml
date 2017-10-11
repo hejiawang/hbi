@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <artifactId>hbi-parent</artifactId>
+        <groupId>com.wang.hbi</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../hbi-parent/pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>hbj-web-admin</artifactId>
+    <packaging>war</packaging>
+    <name>hbj-web-admin Maven Webapp</name>
+    <description>hbi web</description>
+    <url>http://maven.apache.org</url>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.wang.hbi</groupId>
+            <artifactId>hbi-jar-core</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wang.hbi</groupId>
+            <artifactId>hbi-jar-authority</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wang.hbi</groupId>
+            <artifactId>hbi-jar-business</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
