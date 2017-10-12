@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="login-bg">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HBI </title>
+
+    <link rel="stylesheet" href="../static/css/sign/bootstrap.css" >
+    <link rel="stylesheet" href="../static/css/sign/bootstrap-responsive.css" type="text/css" >
+    <link rel="stylesheet" href="../static/css/sign/bootstrap-overrides.css" type="text/css" >
+    <link rel="stylesheet" href="../static/css/sign/font-awesome.css" type="text/css" >
+    <link rel="stylesheet" href="../static/css/sign/login.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="../static/css/sign/layui.css" >
+
+    <style>
+        .msg{color:#f00;width:100%; line-height:30px; }
+    </style>
+    <style id="style-1-cropbar-clipper">
+        .en-markup-crop-options {
+            top: 18px !important;
+            left: 50% !important;
+            margin-left: -100px !important;
+            width: 200px !important;
+            border: 2px rgba(255,255,255,.38) solid !important;
+            border-radius: 4px !important;
+        }
+
+        .en-markup-crop-options div div:first-of-type {
+            margin-left: 0px !important;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="" id="form1">
+        <div class="row-fluid login-wrapper">
+            <a href="#">
+                <img class="logo" src="../static/images/logo.png">
+            </a>
+
+            <div class="span4 box">
+                <div class="content-wrap">
+                    <h6>登录</h6>
+                    <input name="txtLoginName" type="text" id="txtLoginName" class="span12 " placeholder="手机号">
+                    <input name="txtLoginPwd" type="password" id="txtLoginPwd" class="span12" placeholder="密码">
+
+                    <div class="remember">
+                        <input id="chkRememberPwd" type="checkbox" name="chkRememberPwd"><label for="chkRememberPwd">记住密码</label>
+                        <a href="#" class="forgot">忘记密码?</a>
+                    </div>
+                    <input type="submit" name="btnLogin" value="登录" id="btnLogin" class="layui-btn layui-btn-big layui-btn-normal" style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="span4 no-account">
+                <p>没有账号？</p>
+                <a href="#">免费注册</a>
+            </div>
+        </div>
+
+    </form>
+
+</body>
+</html>
