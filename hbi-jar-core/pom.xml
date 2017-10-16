@@ -15,4 +15,22 @@
     <url>http://maven.apache.org</url>
     <description>核心类jar包</description>
 
+    <properties>
+        <ssm.version>3.5.0</ssm.version>
+    </properties>
+
+    <dependencies>
+        <!-- memcached -->
+        <dependency>
+            <groupId>com.google.code.simple-spring-memcached</groupId>
+            <artifactId>simple-spring-memcached</artifactId>
+            <version>${ssm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.simple-spring-memcached</groupId>
+            <artifactId>xmemcached-provider</artifactId>
+            <version>${ssm.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

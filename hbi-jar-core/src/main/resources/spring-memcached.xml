@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+	xmlns:aop="http://www.springframework.org/schema/aop">
+    
+	<context:component-scan base-package="com.wang.hbi.core.memcached">
+	</context:component-scan>
+	
+	<bean name="memcachedClient" class="com.google.code.ssm.CacheFactory">
+		<property name="cacheClientFactory">
+	      <bean name="cacheClientFactory" class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl" />
+	    </property>
+	    <property name="addressProvider">
+	      <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+	        <property name="address" value="${core.memcached.addr}" />
+	      </bean>
+	    </property>
+	    <property name="customTranscoder">
+	    	<bean class="com.wang.hbi.core.memcached.SerializingTranscoder" />
+	    </property>
+	    <property name="configuration">
+	      <bean class="com.google.code.ssm.providers.xmemcached.XMemcachedConfiguration">
+	        <property name="consistentHashing" value="true" />
+	        <!--<property name="connectionPoolSize" value="30"/>-->
+            <property name="optimizeGet" value="true"/> 
+	      </bean>
+	    </property>
+	</bean>
+
+	<bean class="com.google.code.ssm.Settings">
+		<property name="order" value="500" />
+	</bean>
+
+	<bean name="memcachedClientBuilder" class="net.rubyeye.xmemcached.XMemcachedClientBuilder">
+		<constructor-arg>
+			<list>
+				<bean class="java.net.InetSocketAddress">
+					<constructor-arg>
+						<value>${core.session.memcached.addr}</value>
+					</constructor-arg>
+					<constructor-arg>
+						<value>${core.session.memcached.port}</value>
+					</constructor-arg>
+				</bean>
+			</list>
+		</constructor-arg>
+		<!--<property name="connectionPoolSize" value="30"></property>-->
+		<property name="enableHealSession" value="false"></property>
+		<property name="commandFactory">
+			<bean class="net.rubyeye.xmemcached.command.TextCommandFactory"></bean>
+		</property>
+		<property name="sessionLocator">
+			<bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+		</property>
+		<property name="transcoder">
+			<bean class="net.rubyeye.xmemcached.transcoders.SerializingTranscoder" />
+		</property>
+	</bean>
+	<bean name="memcachedClientInstance" factory-bean="memcachedClientBuilder" factory-method="build" destroy-method="shutdown" />
+
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="com.wang.hbi.core.memcached.XMemcachedClientForSession.setClient" />
+		<property name="arguments" ref="memcachedClientInstance" />
+	</bean>
+	<import resource="simplesm-context.xml" />
+
+	<aop:aspectj-autoproxy/>
+</beans>
