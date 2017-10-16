@@ -7,10 +7,24 @@ package com.wang.hbi.core.result;
  */
 public class HttpControllerResult<T> {
 
+	/**
+	 * 返回结果
+	 */
 	private T result;
-	
+
+	/**
+	 * 状态码
+	 */
 	private int code;
-	
+
+	/**
+	 * 是否成功
+	 */
+	private Boolean success;
+
+	/**
+	 * 返回消息
+	 */
 	private String message;
 	
 	public HttpControllerResult () {}
@@ -48,5 +62,12 @@ public class HttpControllerResult<T> {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
+	public Boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
+	}
 }
