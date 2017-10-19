@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  */
 public abstract class BaseController {
 
-    protected final Logger loger = LoggerFactory.getLogger( this.getClass() );
+    protected final Logger logger = LoggerFactory.getLogger( this.getClass() );
 
     protected HttpServletRequest request;
     protected HttpServletResponse response;

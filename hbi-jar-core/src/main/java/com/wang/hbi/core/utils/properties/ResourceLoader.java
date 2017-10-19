@@ -4,8 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;  
 import java.util.HashMap;  
 import java.util.Map;  
-import java.util.Properties; 
+import java.util.Properties;
 
+/**
+ * 加载资源文件
+ *
+ * @author HeJiawang
+ * @date   20171019
+ */
 public final class ResourceLoader {  
 	  
     private static ResourceLoader loader = new ResourceLoader();  

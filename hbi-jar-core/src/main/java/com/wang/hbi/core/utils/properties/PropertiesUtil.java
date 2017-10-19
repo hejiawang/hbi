@@ -5,7 +5,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;  
   
 /** 
- * 用ConcurrentMap来缓存属性文件的key-value 
+ * 用ConcurrentMap来缓存属性文件的key-value
+ *
+ * @author HeJiawang
+ * @date   20171019
  */  
 public class PropertiesUtil {  
       

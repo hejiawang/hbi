@@ -13,8 +13,8 @@ import java.util.concurrent.TimeoutException;
 /**
  * 存储session信息的Memcached工具类
  *
- * @author yintao  yin.tao@foxmail.com
- * @version 1.0     2015-04-20
+ * @author HeJiawang
+ * @date 20171015
  */
 public class XMemcachedClientForSession {
 	private static final Logger logger = LoggerFactory.getLogger(XMemcachedClientForSession.class);

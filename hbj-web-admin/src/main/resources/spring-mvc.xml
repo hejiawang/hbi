@@ -121,7 +121,7 @@
             <mvc:mapping path="/*/*" />
             <mvc:mapping path="/*/**.html" />
             <mvc:mapping path="/*/*/*.html" />
-            <bean class="com.wellhope.godaji.member.web.interceptor.AuthInterceptor" />
+            <bean class="com.wang.hbi.admin.interceptor.AuthorityInterceptor" />
         </mvc:interceptor>
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
             <property name="cacheSeconds" value="0" />
@@ -137,5 +137,9 @@
         <property name="maxInMemorySize" value="512" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
-	
+
+    <bean class="com.wang.hbi.admin.Filter.xss.XssPropertyConfigurer" scope="singleton">
+        <property name="location" value="classpath:xss.properties" />
+    </bean>
+
 </beans>                        
