@@ -1,5 +1,8 @@
 package com.wang.hbi.core.utils.web.admin;
 
+import com.wang.hbi.authority.entrity.SysUserEntrity;
+import com.wang.hbi.core.memcached.XMemcachedClientForSession;
+import com.wang.hbi.core.memcached.XMemcachedConstants;
 import com.wang.hbi.core.utils.password.Md5;
 import com.wang.hbi.core.utils.password.SaltUtil;
 import com.wang.hbi.core.utils.web.CookieHelper;
@@ -61,6 +64,12 @@ public class HbiAdminUserUtil {
     private static final String COOKIE_DOMAIN = "HBI_COOKIE_DOMAIN";
 
     /**
+     * memcached 记录admin工程session信息
+     */
+    public final static String NAMESPACE_HBI_WEB_ADMIN     = "NAMESPACE_HBI_WEB_ADMIN";
+    public final static String NAMESPACE_HBI_WEB_ADMIN_SESSION = NAMESPACE_HBI_WEB_ADMIN + "_SESSION_";
+
+    /**
      * 获取请求的sessionId
      * @param request 请求
      * @return sessionId
@@ -108,4 +117,65 @@ public class HbiAdminUserUtil {
         return Md5.getMd5String(ip + System.currentTimeMillis() + SaltUtil.generateWord(4));
     }
 
+    /**
+     * 将用户信息存至Memcached
+     * @param request request
+     * @param user 用户信息
+     * @return 用户信息
+     */
+    public static SysUserEntrity WriteUserToMemcached(HttpServletRequest request, SysUserEntrity user){
+        try {
+            if (request == null || user == null) return new SysUserEntrity();
+
+            user.setCurrentIp(ClientIPUtils.getIpAddr(request));
+            WriteUserToMemcached(getSessionId(request), user);
+        } catch (Exception e) {
+            logger.error("用户信息写入memcached中异常", e);
+        }
+        return user;
+    }
+
+    /**
+     * 缓存用户信息至memcached,缓存时间为7天
+     * @param sessionId sessionId
+     * @param user 用户信息
+     */
+    public static void WriteUserToMemcached(String sessionId, SysUserEntrity user){
+        if (user == null || sessionId == null)  return ;
+
+        try {
+            final String key = NAMESPACE_HBI_WEB_ADMIN_SESSION + sessionId;
+            XMemcachedClientForSession.set(key, XMemcachedConstants.TIME_OUT_ONE_HOUR, user);
+        } catch (Exception e) {
+            logger.error("用户信息写入memcached中异常", e);
+        }
+    }
+
+    /**
+     * 从memcached中获取用户信息
+     * @param request request
+     * @return 用户信息
+     */
+    public static SysUserEntrity getUserByRequest(HttpServletRequest request) {
+        return getUserBySessionId(getSessionId(request));
+    }
+
+    /**
+     * 从memcached中获取用户信息
+     * @param sessionId sessionId
+     * @return 用户信息
+     */
+    public static SysUserEntrity getUserBySessionId(String sessionId) {
+        try {
+            String key = NAMESPACE_HBI_WEB_ADMIN_SESSION  + sessionId;
+
+            SysUserEntrity user = (SysUserEntrity) XMemcachedClientForSession.get(key);
+            if (user == null) return new SysUserEntrity();
+
+            return  user;
+        } catch (Exception e) {
+            logger.error("获取从memcached中frontendUser异常", e);
+            return new SysUserEntrity();
+        }
+    }
 }

@@ -1,5 +1,7 @@
 package com.wang.hbi.admin.interceptor;
 
+import com.wang.hbi.authority.entrity.SysUserEntrity;
+import com.wang.hbi.core.utils.web.admin.HbiAdminUserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -36,6 +38,12 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 
             if( ANONYMOUS_URLS.contains( request.getRequestURI() ) ){
                 return true;
+            }
+
+            SysUserEntrity user = HbiAdminUserUtil.getUserByRequest(request);
+            if( user == null || user.getId() == null ){
+                response.sendRedirect("/login");
+                return false;
             }
 
             return true;

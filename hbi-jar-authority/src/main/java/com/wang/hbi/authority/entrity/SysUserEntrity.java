@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author HeJiawang
  * @date   20171016
  */
-public class UserEntrity implements Serializable {
+public class SysUserEntrity implements Serializable {
 
     private static final long serialVersionUID = 7398272058924381572L;
 
@@ -35,6 +35,19 @@ public class UserEntrity implements Serializable {
      * 联系电话
      */
     private String telephone;
+
+    /**
+     * IP 地址
+     */
+    private String currentIp;
+
+    public String getCurrentIp() {
+        return currentIp;
+    }
+
+    public void setCurrentIp(String currentIp) {
+        this.currentIp = currentIp;
+    }
 
     public String getId() {
         return id;
