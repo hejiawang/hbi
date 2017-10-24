@@ -56,6 +56,11 @@ public class HbiAdminUserUtil {
     private static final String COOKIE_SESSION_ID = USER_COOKIE_KEY + "_SESSION_ID";
 
     /**
+     * cookie domain
+     */
+    private static final String COOKIE_DOMAIN = "HBI_COOKIE_DOMAIN";
+
+    /**
      * 获取请求的sessionId
      * @param request 请求
      * @return sessionId
@@ -83,7 +88,7 @@ public class HbiAdminUserUtil {
             CookieHelper.addCookie(
                     COOKIE_SESSION_ID,
                     sessionId,
-                    DomainUrlUtil.COOKIE_DOMAIN,
+                    COOKIE_DOMAIN,
                     "/",
                     -1, //session有效时间为关闭浏览器失效
                     response
