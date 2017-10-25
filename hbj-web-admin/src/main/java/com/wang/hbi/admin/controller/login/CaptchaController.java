@@ -2,7 +2,8 @@ package com.wang.hbi.admin.controller.login;
 
 import com.wang.hbi.admin.controller.BaseController;
 import com.wang.hbi.core.utils.web.KaptchaDefine;
-import com.wang.hbi.core.utils.web.admin.HbiAdminUserUtil;
+import com.wang.hbi.admin.utils.HbiAdminUserUtil;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,6 +21,8 @@ import java.util.Random;
  * @Author HeJiawang
  * @Date 2017/10/19 22:00
  */
+@Controller
+@RequestMapping("/")
 public class CaptchaController extends BaseController {
 
     /**

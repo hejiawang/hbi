@@ -20,12 +20,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.wang.hbi</groupId>
-            <artifactId>hbi-jar-authority</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <!-- memcached -->
         <dependency>
             <groupId>com.google.code.simple-spring-memcached</groupId>

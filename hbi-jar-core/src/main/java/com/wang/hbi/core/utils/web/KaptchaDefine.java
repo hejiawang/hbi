@@ -3,7 +3,7 @@ package com.wang.hbi.core.utils.web;
 import com.google.code.kaptcha.Producer;
 import com.wang.hbi.core.memcached.XMemcachedClientForSession;
 import com.wang.hbi.core.memcached.XMemcachedConstants;
-import com.wang.hbi.core.utils.web.admin.HbiAdminUserUtil;
+import com.wang.hbi.core.utils.web.admin.HbiAdminConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -215,7 +215,7 @@ public class KaptchaDefine implements Producer {
 	public static String getTextFromMemcached(String sessionId) {
 		String text = null;
 		try {
-			text = (String) XMemcachedClientForSession.get(HbiAdminUserUtil.CAPTCHA + sessionId);
+			text = (String) XMemcachedClientForSession.get(HbiAdminConstants.CAPTCHA + sessionId);
 		} catch (Exception e) {
 			logger.error("memcached验证码读取错误", e);
 		}
@@ -229,7 +229,7 @@ public class KaptchaDefine implements Producer {
 	 */
 	public static void setTextToMemcached(String sessionId, final String text) {
 		try {
-			XMemcachedClientForSession.set(HbiAdminUserUtil.CAPTCHA + sessionId, XMemcachedConstants.TIME_OUT_FIVE_MINUTES, text);
+			XMemcachedClientForSession.set(HbiAdminConstants.CAPTCHA + sessionId, XMemcachedConstants.TIME_OUT_FIVE_MINUTES, text);
 		} catch (Exception e) {
 			logger.error("memcached验证码写入错误", e);
 		}
@@ -241,7 +241,7 @@ public class KaptchaDefine implements Producer {
 	 */
 	public static void deleteTextToMemcached(String sessionId) {
 		try {
-			XMemcachedClientForSession.delete(HbiAdminUserUtil.CAPTCHA + sessionId);
+			XMemcachedClientForSession.delete(HbiAdminConstants.CAPTCHA + sessionId);
 		} catch (Exception e) {
 			logger.error("memcached验证码删除错误", e);
 		}

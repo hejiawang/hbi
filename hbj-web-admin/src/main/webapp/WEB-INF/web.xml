@@ -112,7 +112,7 @@
   </servlet-mapping>
 
   <!-- xss过滤-开始 -->
-  <filter>
+  <!--<filter>
     <filter-name>XssFilter</filter-name>
     <filter-class>com.wang.hbi.admin.Filter.xss.XssFilter</filter-class>
   </filter>
@@ -121,7 +121,7 @@
     <filter-name>XssFilter</filter-name>
     <url-pattern>/*</url-pattern>
     <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
+  </filter-mapping>-->
   <!-- xss过滤-结束 -->
 
   <welcome-file-list>

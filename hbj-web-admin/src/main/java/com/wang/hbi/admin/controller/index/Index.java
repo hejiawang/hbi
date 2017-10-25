@@ -25,6 +25,7 @@ public class Index extends BaseController {
      */
     @RequestMapping(value = "", method= RequestMethod.GET)
     public String index(){
+        logger.info(" asdfasdfasdfasdf ");
         return "login";
     }
 

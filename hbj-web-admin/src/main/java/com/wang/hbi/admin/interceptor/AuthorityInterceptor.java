@@ -1,7 +1,7 @@
 package com.wang.hbi.admin.interceptor;
 
 import com.wang.hbi.authority.entrity.SysUserEntrity;
-import com.wang.hbi.core.utils.web.admin.HbiAdminUserUtil;
+import com.wang.hbi.admin.utils.HbiAdminUserUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -29,12 +29,13 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
     private final static Set<String> ANONYMOUS_URLS = new HashSet<String>();
 
     static {
-        ANONYMOUS_URLS.add("/login");
+        ANONYMOUS_URLS.add("/hbi/login");
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try{
+            logger.info(request.getRequestURI());
 
             if( ANONYMOUS_URLS.contains( request.getRequestURI() ) ){
                 return true;
@@ -42,7 +43,7 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 
             SysUserEntrity user = HbiAdminUserUtil.getUserByRequest(request);
             if( user == null || user.getId() == null ){
-                response.sendRedirect("/login");
+                response.sendRedirect("/hbi/login");
                 return false;
             }
 
