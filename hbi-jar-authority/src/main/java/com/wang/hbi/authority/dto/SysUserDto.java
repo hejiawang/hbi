@@ -5,7 +5,6 @@ import com.wang.hbi.core.convert.DtoConvert;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -112,27 +111,45 @@ public class SysUserDto implements Serializable {
     }
 
     /**
-     * 转换为SysUserEntrity
+     * SysUserDto转换为SysUserEntrity
      * @return SysUserEntrity
      */
     public SysUserEntrity convertToUserEntrity(){
         SysUserDtoConvert sysUserDtoConvert = new SysUserDtoConvert();
-        SysUserEntrity userEntrity = sysUserDtoConvert.convert(this);
+        SysUserEntrity userEntrity = sysUserDtoConvert.doForward(this);
 
         return userEntrity;
     }
 
     /**
+     * SysUserEntrity转换为SysUserDto
+     * @return SysUserDto
+     */
+    public SysUserDto convertToUserDto( SysUserEntrity userEntrity ){
+        SysUserDtoConvert sysUserDtoConvert = new SysUserDtoConvert();
+
+        return sysUserDtoConvert.doBackward(userEntrity);
+    }
+
+    /**
      * SysUserDto 转换
      */
-    private static class SysUserDtoConvert implements DtoConvert< SysUserDto, SysUserEntrity>{
+    private static class SysUserDtoConvert implements DtoConvert<SysUserDto, SysUserEntrity> {
 
         @Override
-        public SysUserEntrity convert(SysUserDto sysUserDto) {
+        public SysUserEntrity doForward(SysUserDto sysUserDto) {
             SysUserEntrity userEntrity = new SysUserEntrity();
             BeanUtils.copyProperties(sysUserDto, userEntrity);
 
             return userEntrity;
+        }
+
+        @Override
+        public SysUserDto doBackward(SysUserEntrity sysUserEntrity) {
+            SysUserDto userDto = new SysUserDto();
+            BeanUtils.copyProperties(sysUserEntrity, userDto);
+
+            return userDto;
         }
     }
 }

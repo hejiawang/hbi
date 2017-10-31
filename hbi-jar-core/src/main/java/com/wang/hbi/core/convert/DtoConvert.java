@@ -12,5 +12,12 @@ public interface DtoConvert<S, T> {
      * @param s sourec
      * @return target
      */
-    T convert(S s);
+    T doForward(S s);
+
+    /**
+     * 将目标对象转换为资源对象
+     * @param t target
+     * @return sourec
+     */
+    S doBackward(T t);
 }
