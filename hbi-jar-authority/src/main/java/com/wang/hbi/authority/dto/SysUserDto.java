@@ -5,6 +5,7 @@ import com.wang.hbi.core.convert.DtoConvert;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.BeanUtils;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -27,6 +28,7 @@ public class SysUserDto implements Serializable {
     /**
      * 登录名
      */
+    @NotNull
     private String loginName;
 
     /**

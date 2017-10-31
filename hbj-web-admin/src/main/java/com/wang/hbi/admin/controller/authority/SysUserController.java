@@ -4,12 +4,13 @@ import com.wang.hbi.admin.controller.BaseController;
 import com.wang.hbi.authority.dto.SysUserDto;
 import com.wang.hbi.authority.service.SysUserService;
 import com.wang.hbi.core.result.HttpControllerResult;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * 用户管理Controller
@@ -32,7 +33,9 @@ public class SysUserController extends BaseController {
      * @return HttpControllerResult
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST )
-    public HttpControllerResult<Void> saveUser( SysUserDto sysUserDto ){
+    public HttpControllerResult<Void> saveUser( @Valid SysUserDto sysUserDto, BindingResult bindingResult ){
+        checkDTOParams(bindingResult);
+
         HttpControllerResult<Void> result = new HttpControllerResult<Void>();
 
         Boolean success = sysUserService.saveUser( sysUserDto );
@@ -42,6 +45,12 @@ public class SysUserController extends BaseController {
         result.setMessage(message);
 
         return result;
+    }
+
+    private void checkDTOParams(BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            //throw new 带验证码的验证错误异常
+        }
     }
 
 }
