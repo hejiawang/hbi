@@ -1,5 +1,6 @@
 package com.wang.hbi.authority.service;
 
+import com.wang.hbi.authority.dto.SysUserDto;
 import com.wang.hbi.authority.entrity.SysUserEntrity;
 
 /**
@@ -16,4 +17,11 @@ public interface SysUserService {
      * @return 用户信息
      */
     SysUserEntrity checkUser(String loginName, String password);
+
+    /**
+     * 添加用户
+     * @param sysUserDto 用户信息
+     * @return 是否添加用户成功
+     */
+    Boolean saveUser(SysUserDto sysUserDto);
 }
