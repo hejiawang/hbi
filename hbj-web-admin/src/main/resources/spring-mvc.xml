@@ -28,10 +28,24 @@
     <!-- 静态资源 -->
     <mvc:resources location="/static/images/" mapping="/static/image/**"/>
     <mvc:resources location="/static/css/" mapping="/static/css/**"/>
+    <mvc:resources location="/static/lib/" mapping="/static/scripts/**"/>
     <mvc:resources location="/static/scripts/" mapping="/static/scripts/**"/>
 
 	<mvc:default-servlet-handler />
-	
+
+    <!-- 第一步:  创建自定义日期转换规则 -->
+    <bean id="dateConvert" class="com.wang.hbi.core.convert.DateConvert"/>
+    <!-- 第二步： 创建convertion-Service ，并注入dateConvert-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <ref bean="dateConvert"/>
+            </set>
+        </property>
+    </bean>
+    <!-- 第三步：注册处理器映射器/处理器适配器 ，添加conversion-service属性-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
     <!-- json 转化器 -->
     <bean id="stringConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
         <property name="supportedMediaTypes">
@@ -136,6 +150,7 @@
         <property name="maxUploadSize" value="5120000" />
         <property name="maxInMemorySize" value="512" />
         <property name="defaultEncoding" value="UTF-8" />
+        <property name="resolveLazily" value="true"/>
     </bean>
 
     <bean class="com.wang.hbi.admin.Filter.xss.XssPropertyConfigurer" scope="singleton">
