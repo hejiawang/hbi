@@ -1,10 +1,10 @@
 package com.wang.hbi.admin.aspect;
 
+import com.google.common.collect.Maps;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -22,7 +22,7 @@ public class TestAspect {
     private static Map<String, String> map = null;
 
     {
-        map = new HashMap<String, String>();
+        map = Maps.newHashMap();
     }
 
     /**

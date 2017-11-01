@@ -42,9 +42,8 @@ public abstract class BaseController {
      */
     protected <E> List<E> convertList(List<Object> sources, Class<E> targetClass) throws Exception {
         List<E> targetList = new ArrayList<>();
-        for (Object source : sources) {
-            targetList.add(convert(source, targetClass));
-        }
+        sources.forEach(source ->targetList.add(convert(source, targetClass)));
+
         return targetList;
     }
 

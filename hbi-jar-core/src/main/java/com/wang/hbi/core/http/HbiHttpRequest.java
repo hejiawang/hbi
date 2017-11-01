@@ -45,18 +45,6 @@ public class HbiHttpRequest extends HttpServletRequestWrapper {
 				return super.getParameterMap();
 			} else {
 				Set<String> key = map.keySet();
-				/*for (String string : key) {
-					String[] value = map.get(string);
-					for (int i = 0; i < value.length; i++) {
-						try {
-							String string2 = new String(value[i].getBytes("iso-8859-1"), "utf-8");
-							value[i] = string2;
-						} catch (UnsupportedEncodingException e) {
-							e.printStackTrace();
-						}
-					}
-				}*/
-
 				key.forEach(string -> {
 					String[] value = map.get(string);
 					value = Arrays.stream(value).map(valueTemp -> {

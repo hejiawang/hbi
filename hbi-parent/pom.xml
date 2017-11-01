@@ -52,6 +52,7 @@
     <javax.validation>2.0.0.Final</javax.validation>
     <hibernate-validator>4.3.1.Final</hibernate-validator>
     <org.projectlombok>1.16.18</org.projectlombok>
+    <com.google.guava>18.0</com.google.guava>
   </properties>
 
   <!-- 统一开启所有jar包依赖于hbi根项目 -->
@@ -335,6 +336,13 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>${org.projectlombok}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${com.google.guava}</version>
     </dependency>
 
 
