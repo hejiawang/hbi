@@ -37,9 +37,7 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
         try{
             logger.info(request.getRequestURI());
 
-            if( ANONYMOUS_URLS.contains( request.getRequestURI() ) ){
-                return true;
-            }
+            if( ANONYMOUS_URLS.contains( request.getRequestURI() ) )  return true;
 
             SysUserEntrity user = HbiAdminUserUtil.getUserByRequest(request);
             if( user == null || user.getId() == null ){

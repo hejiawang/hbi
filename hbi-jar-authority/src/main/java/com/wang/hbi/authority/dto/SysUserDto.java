@@ -2,6 +2,9 @@ package com.wang.hbi.authority.dto;
 
 import com.wang.hbi.authority.entrity.SysUserEntrity;
 import com.wang.hbi.core.convert.DtoConvert;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.BeanUtils;
 
@@ -13,6 +16,9 @@ import java.io.Serializable;
  * @author HeJiawang
  * @date   20171031
  */
+@Accessors(chain = true)
+@Setter
+@Getter
 public class SysUserDto implements Serializable {
 
     /**
@@ -55,62 +61,6 @@ public class SysUserDto implements Serializable {
      * IP 地址
      */
     private String currentIp;
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
-
-    public String getCurrentIp() {
-        return currentIp;
-    }
-
-    public void setCurrentIp(String currentIp) {
-        this.currentIp = currentIp;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
 
     /**
      * SysUserDto转换为SysUserEntrity

@@ -59,14 +59,15 @@ public class HbiHttpRequest extends HttpServletRequestWrapper {
 
 				key.forEach(string -> {
 					String[] value = map.get(string);
-
-					Stream.of(value).forEach(valueTem -> {
+					value = Arrays.stream(value).map(valueTemp -> {
+						String string2 = "";
 						try {
-							valueTem = new String(valueTem.getBytes("iso-8859-1"), "utf-8");
+							string2 = new String(valueTemp.getBytes("iso-8859-1"), "utf-8");
 						} catch (UnsupportedEncodingException e) {
 							e.printStackTrace();
 						}
-					});
+						return string2;
+					}).toArray(type -> new String[type]);
 				});
 
 				flag = true;

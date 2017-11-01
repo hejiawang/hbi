@@ -1,5 +1,6 @@
 package com.wang.hbi.test;
 
+import com.wang.hbi.authority.entrity.SysUserEntrity;
 import junit.framework.TestCase;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -12,9 +13,7 @@ public class TemTest extends TestCase {
 
     @Test
     public void debugTest(){
-        String str1 = "str";
-        String str2 = "str";
-
-        assertTrue(StringUtils.equals(str1, str2));
+        SysUserEntrity user = new SysUserEntrity();
+        user.getId();
     }
 }
