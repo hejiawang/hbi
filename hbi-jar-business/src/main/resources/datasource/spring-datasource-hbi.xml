@@ -56,7 +56,7 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath*:/com/wang/*/mapper/*.xml</value>
+				<value>classpath*:/com/wang/hbi/business/mapper/*.xml</value>
 			</list>
 		</property>
 		<property name="plugins">  
@@ -104,7 +104,7 @@
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut id="transactionPointcut" expression="execution(* com.wang.hbi.service..*Impl.*(..))" />
+		<aop:pointcut id="transactionPointcut" expression="execution(* com.wang.hbi.business.service..*Impl.*(..))" />
 		<aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
 	</aop:config>
 
