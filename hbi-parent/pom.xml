@@ -29,6 +29,8 @@
     <druid.version>1.0.13</druid.version>
     <mybatis.version>3.4.1</mybatis.version>
     <mybatis.spring.version>1.3.0</mybatis.spring.version>
+    <tk.mybatis.version>3.3.8</tk.mybatis.version>
+    <pagehelper.version>5.0.0</pagehelper.version>
     <hibernate.version>4.3.11.Final</hibernate.version>
     <mysql.version>5.1.34</mysql.version>
     <apache.common.version>2.1.1</apache.common.version>
@@ -49,6 +51,8 @@
     <commons-lang.version>2.4</commons-lang.version>
     <jackson.version>1.9.8</jackson.version>
     <commons-fileupload.version>1.3.3</commons-fileupload.version>
+    <memcached.version>3.5.0</memcached.version>
+    <kaptcha.version>2.3.2</kaptcha.version>
   </properties>
 
   <!-- 统一开启所有jar包依赖于gmp根项目 -->
@@ -308,6 +312,57 @@
       <groupId>commons-fileupload</groupId>
       <artifactId>commons-fileupload</artifactId>
       <version>${commons-fileupload.version}</version>
+    </dependency>
+
+    <!-- memcached -->
+    <dependency>
+      <groupId>com.google.code.simple-spring-memcached</groupId>
+      <artifactId>simple-spring-memcached</artifactId>
+      <version>${memcached.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.simple-spring-memcached</groupId>
+      <artifactId>xmemcached-provider</artifactId>
+      <version>${memcached.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.code/kaptcha -->
+    <dependency>
+      <groupId>com.google.code</groupId>
+      <artifactId>kaptcha</artifactId>
+      <version>${kaptcha.version}</version>
+    </dependency>
+
+    <!--mybatis核心包 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>${mybatis.spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>tk.mybatis</groupId>
+      <artifactId>mapper</artifactId>
+      <version>${tk.mybatis.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.persistence</groupId>
+          <artifactId>persistence-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- pagehelper maven 引入 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>${pagehelper.version}</version>
     </dependency>
 
   </dependencies>
