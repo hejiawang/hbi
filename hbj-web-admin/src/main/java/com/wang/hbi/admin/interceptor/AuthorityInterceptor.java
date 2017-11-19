@@ -1,5 +1,6 @@
 package com.wang.hbi.admin.interceptor;
 
+import com.google.common.collect.Sets;
 import com.wang.hbi.authority.entrity.SysUserEntrity;
 import com.wang.hbi.admin.utils.HbiAdminUserUtil;
 import org.slf4j.Logger;
@@ -8,7 +9,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -26,7 +26,7 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
     /**
      * 免权限列表
      */
-    private final static Set<String> ANONYMOUS_URLS = new HashSet<String>();
+    private final static Set<String> ANONYMOUS_URLS = Sets.newHashSet();
 
     static {
         ANONYMOUS_URLS.add("/hbi/login");
@@ -37,9 +37,7 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
         try{
             logger.info(request.getRequestURI());
 
-            if( ANONYMOUS_URLS.contains( request.getRequestURI() ) ){
-                return true;
-            }
+            if( ANONYMOUS_URLS.contains( request.getRequestURI() ) )  return true;
 
             SysUserEntrity user = HbiAdminUserUtil.getUserByRequest(request);
             if( user == null || user.getId() == null ){

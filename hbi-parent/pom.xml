@@ -53,6 +53,10 @@
     <commons-fileupload.version>1.3.3</commons-fileupload.version>
     <memcached.version>3.5.0</memcached.version>
     <kaptcha.version>2.3.2</kaptcha.version>
+    <javax.validation>2.0.0.Final</javax.validation>
+    <hibernate-validator>4.3.1.Final</hibernate-validator>
+    <org.projectlombok>1.16.18</org.projectlombok>
+    <com.google.guava>18.0</com.google.guava>
   </properties>
 
   <!-- 统一开启所有jar包依赖于gmp根项目 -->
@@ -252,6 +256,23 @@
       <version>${hibernate.version}</version>
     </dependency>
 
+    <!--jsr验证-->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${javax.validation}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator-annotation-processor</artifactId>
+      <version>${hibernate-validator}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator}</version>
+    </dependency>
+
     <!-- 引入druid相关依赖 -->
     <dependency>
       <groupId>com.alibaba</groupId>
@@ -364,6 +385,21 @@
       <artifactId>pagehelper</artifactId>
       <version>${pagehelper.version}</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${org.projectlombok}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${com.google.guava}</version>
+    </dependency>
+
 
   </dependencies>
 

@@ -18,4 +18,11 @@ public interface SysUserDao {
      * @return 用户信息
      */
     SysUserEntrity findByLoginNameAndPassword(String loginName, String password);
+
+    /**
+     * 保存用户信息
+     * @param userEntrity 用户信息
+     * @return 用户信息
+     */
+    SysUserEntrity save(SysUserEntrity userEntrity);
 }

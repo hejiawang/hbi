@@ -1,5 +1,8 @@
 package com.wang.hbi.authority.entrity;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -10,6 +13,9 @@ import java.io.Serializable;
  * @author HeJiawang
  * @date   20171016
  */
+@Accessors(chain = true)
+@Setter
+@Getter
 @Entity
 @Table(name = "sys_user")
 public class SysUserEntrity implements Serializable {
@@ -55,51 +61,4 @@ public class SysUserEntrity implements Serializable {
     @Transient
     private String currentIp;
 
-    public String getCurrentIp() {
-        return currentIp;
-    }
-
-    public void setCurrentIp(String currentIp) {
-        this.currentIp = currentIp;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
 }
